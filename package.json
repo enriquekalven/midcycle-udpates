@@ -1,0 +1,33 @@
+{
+  "name": "fishermans-wharf-agent",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "vitest run",
+    "dev": "tsx watch src/index.ts",
+    "server": "tsx watch src/server.ts",
+    "registry": "tsx src/registry-start.ts"
+  },
+  "dependencies": {
+    "@a2a-js/sdk": "^0.3.3",
+    "@google-cloud/aiplatform": "^6.5.0",
+    "@google-cloud/text-to-speech": "^6.4.0",
+    "@google/adk": "latest",
+    "dotenv": "^17.2.0",
+    "express": "^4.21.2",
+    "fs-extra": "^11.3.4",
+    "tsx": "latest",
+    "typescript": "latest",
+    "uuid": "^11.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.19.15",
+    "vitest": "^4.0.0"
+  }
+}
