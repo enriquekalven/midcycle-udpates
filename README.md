@@ -10,6 +10,17 @@ The project is organized into three main components:
 - **`agent-ts/`**: The TypeScript-based agent developed using the Vertex AI Agent Development Kit (ADK).
 - **`agent-python/`**: The Python-based Reasoning Engine agent, providing backend AI logic and specialized research capabilities.
 
+## Visual Overview
+
+### 🍽️ Digital Menu Platform
+![Digital Menu Layout](docs/screenshots/main_menu.png)
+
+### 🤖 AI Customer Assistant
+![Chat Assistant Interface](docs/screenshots/chat_assistant.png)
+
+### 🎙️ Digital Concierge (Marketing Avatar)
+![Digital Concierge Avatar](docs/screenshots/digital_concierge.png)
+
 ## AI Agent Capabilities
 
 The platform demonstrates advanced GenAI capabilities including:
