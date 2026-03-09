@@ -12,8 +12,8 @@ app.use('/api/audio', express.static(path.join(process.cwd(), 'public', 'audio')
 app.use('/api/videos', express.static(path.join(process.cwd(), 'public', 'videos')));
 import path from 'path';
 
-app.post('/api/chat/stream', async (req, res) => {
-  const { message } = req.body;
+app.get('/api/chat/stream', async (req, res) => {
+  const { message } = req.query as { message: string };
 
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');

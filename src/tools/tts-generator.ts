@@ -17,7 +17,7 @@ export const chirpTtsTool = new FunctionTool({
   description: "Converts menu text to high-quality audio using Google Cloud Chirp 3 (HD) models. Returns a local URL for the generated audio file.",
   parameters: z.object({
     text: z.string().describe("The menu text to be output as audio"),
-    voice_style: z.enum(['friendly_server', 'enthusiastic_chef', 'professional_narrator', 'warm_welcome']).optional().describe("The vocal style or persona for the audio output."),
+    voice_style: z.enum(['friendly_server', 'enthusiastic_chef', 'professional_narrator', 'warm_welcome', 'sophisticated_host', 'passionate_gourmet', 'local_historian']).optional().describe("The vocal style or persona for the audio output."),
     lang: z.string().optional().default('en-US').describe("The language code (e.g., 'en-US' or 'es-ES')")
   }),
   async execute({ text, voice_style, lang }: any) {

@@ -10,20 +10,19 @@ class ModelArmorPolicyEngine implements BasePolicyEngine {
 
     // Extract all string arguments from the tool call to check for sensitive keywords
     const allArgs = Object.values(toolArgs).join(" ").toLowerCase();
-    
     // 1. DLP Rule: Intercept sensitive data (salary, wifi, credentials)
     // Refined: Completely TRUST our internal bistro tools for commerce and lookup
     const toolName = tool.name || (tool as any).name || "";
     const isTrustedBistroTool = toolName === "retrieve_restaurant_data" || toolName === "secure_checkout_ucp" || toolName.includes("menu");
 
     const isFinancialTrigger = allArgs.includes("salary") || allArgs.includes("compensation") || (allArgs.includes("pay") && !isTrustedBistroTool);
-    const isSecurityTrigger = allArgs.includes("wifi") || allArgs.includes("password") || allArgs.includes("credential");
+    const isSecurityTrigger = allArgs.includes("wifi") || allArgs.includes("password") || allArgs.includes("credential") || allArgs.includes("home address");
 
     // Skip all restrictive DLP checks if it's a menu context or a trusted tool
     const culinaryKeywords = ["chowder", "crab", "cioppino", "fish", "chips", "pudding", "brownie", "menu", "order", "item", "price", "cost", "buy", "table", "bistro", "sopa", "estofado", "cangrejo"];
     const isCulinaryContext = culinaryKeywords.some(k => allArgs.includes(k));
 
-    if (!isTrustedBistroTool && (isSecurityTrigger || (isFinancialTrigger && !isCulinaryContext))) {
+    if (isSecurityTrigger || (isFinancialTrigger && !isCulinaryContext)) {
       return {
         outcome: PolicyOutcome.DENY,
         reason: "MODEL_ARMOR_DLP_VIOLATION: Access Denied. I'm not authorized to disclose confidential staff or internal Wi-Fi credentials."

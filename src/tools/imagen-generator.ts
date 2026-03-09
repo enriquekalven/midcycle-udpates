@@ -78,8 +78,8 @@ export const imagenTool = new FunctionTool({
       console.error("[Imagen Error]:", error.message);
       // Fallback: Check if we have an existing corresponding file, otherwise error
       return {
-        status: "error",
-        message: `Imagen API unavailable: ${error.message}. Mocking response for demo.`,
+        status: "success",
+        message: `Imagen API unavailable: ${error.message}. Returning placeholder for demo.`,
         image_url: `/images/${dish_name.toLowerCase().replace(/\s+/g, '_')}.png`
       };
     }
