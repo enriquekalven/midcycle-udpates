@@ -8,7 +8,7 @@ export default defineConfig({
     env: {
       GEMINI_API_KEY: 'mock_key',
       GOOGLE_GENAI_API_KEY: 'mock_key',
-      GOOGLE_CLOUD_PROJECT: 'project-maui',
+      GOOGLE_CLOUD_PROJECT: 'enriquekchan-b646b',
       GOOGLE_CLOUD_LOCATION: 'us-central1'
     }
   },

@@ -1,5 +1,15 @@
 {
   "projects": {
-    "default": "gartnergoldenbistro"
-  }
+    "default": "enriquekchan-b646b"
+  },
+  "targets": {
+    "enriquekchan-b646b": {
+      "hosting": {
+        "production": [
+          "gartnergoldenvistrov2"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

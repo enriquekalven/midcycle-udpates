@@ -11,7 +11,7 @@ export const ragRetrievalTool = new FunctionTool({
   async execute({ query }: any, { logger }: any) {
     if (logger) logger.info(`RAG Retrieval Query: ${query}`);
     
-    const project = process.env.GOOGLE_CLOUD_PROJECT || 'project-maui';
+    const project = process.env.GOOGLE_CLOUD_PROJECT || 'enriquekchan-b646b';
     const location = process.env.GOOGLE_CLOUD_LOCATION || 'us-central1';
     
     try {

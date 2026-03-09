@@ -4,10 +4,13 @@ import cors from 'cors';
 import { customerAssistantAgent } from './agents/customer-assistant.js';
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/audio', express.static(path.join(process.cwd(), 'public', 'audio')));
+app.use('/api/videos', express.static(path.join(process.cwd(), 'public', 'videos')));
+import path from 'path';
 
 app.post('/api/chat/stream', async (req, res) => {
   const { message } = req.body;

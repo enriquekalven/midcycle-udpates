@@ -134,7 +134,7 @@ export function MarketingAvatar() {
     // Always use high-fidelity live API (Chirp 3) for BOTH English and Spanish if available.
     setStatus(isSpanish ? "Generando Audio de Alta Fidelidad..." : "Generating High-Fidelity Audio...");
     
-    fetch("http://localhost:3001/api/tts", {
+    fetch("/api/tts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 
@@ -146,7 +146,7 @@ export function MarketingAvatar() {
     .then(r => r.json())
     .then(data => {
       if (data.audio_url) {
-        const audio = new Audio(`http://localhost:3001${data.audio_url}`);
+        const audio = new Audio(`/api${data.audio_url}`);
         audio.onplay = () => {
           stopRecognition(); // Double-ensure mic is off
           setIsAgentSpeaking(true);

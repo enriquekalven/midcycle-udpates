@@ -1,14 +1,12 @@
 {
   "hosting": {
-    "source": ".",
+    "target": "production",
+    "public": "out",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
-    "frameworksBackend": {
-      "region": "us-central1"
-    },
     "rewrites": [
       {
         "source": "/api/**",
@@ -19,7 +17,7 @@
       },
       {
         "source": "**",
-        "function": "nextjsbackend"
+        "destination": "/index.html"
       }
     ]
   }

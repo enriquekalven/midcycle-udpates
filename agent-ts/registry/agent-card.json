@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "Deep research and menu analysis agent specializing in Fisherman's Wharf dining trends.",
   "type": "A2A_AGENT",
-  "url": "https://fishermans-wharf-agent-v2-project-maui.a.run.app",
+  "url": "https://fishermans-wharf-agent-v2-enriquekchan-b646b.a.run.app",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,

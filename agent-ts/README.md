@@ -28,7 +28,7 @@ npm run start-server
 ## Deployment
 This project is configured for **Vertex AI Agent Engine** deployment.
 ```bash
-adk deploy agent_engine --project project-maui --location us-east1
+adk deploy agent_engine --project enriquekchan-b646b --location us-east1
 ```
 
 ---

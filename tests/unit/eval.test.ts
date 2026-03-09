@@ -11,13 +11,13 @@ export async function vertexAiEvaluationService(
   console.log(`--- Vertex AI Gen AI Evaluation Service Executing A/B Test ---`);
   console.log(`Criteria Check: ${criteria.join(', ')}`);
 
-  // Connect to gen ai evaluation service in project-maui
+  // Connect to gen ai evaluation service in enriquekchan-b646b
   const client = new v1beta1.EvaluationServiceClient({
-    projectId: 'project-maui',
+    projectId: 'enriquekchan-b646b',
     apiEndpoint: 'us-central1-aiplatform.googleapis.com',
   });
 
-  const location = client.locationPath('project-maui', 'us-central1');
+  const location = client.locationPath('enriquekchan-b646b', 'us-central1');
 
   try {
     // Attempt to evaluate instances using the API
@@ -34,7 +34,7 @@ export async function vertexAiEvaluationService(
     
     console.log("Evaluation Service Response:", response);
   } catch (err: any) {
-    console.warn("Vertex AI Evaluation API error (expected if no Application Default Credentials found for project-maui):", err.message);
+    console.warn("Vertex AI Evaluation API error (expected if no Application Default Credentials found for enriquekchan-b646b):", err.message);
   }
   
   // Also verify our specific checks as fallbacks/addons

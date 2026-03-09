@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "tsx src/server.ts",
-    "dev": "GOOGLE_CLOUD_PROJECT=project-maui GOOGLE_CLOUD_LOCATION=us-east1 GOOGLE_GENAI_USE_VERTEXAI=true tsx src/index.ts",
-    "start-server": "GOOGLE_CLOUD_PROJECT=project-maui GOOGLE_CLOUD_LOCATION=us-east1 GOOGLE_GENAI_USE_VERTEXAI=true tsx src/server.ts",
+    "dev": "GOOGLE_CLOUD_PROJECT=enriquekchan-b646b GOOGLE_CLOUD_LOCATION=us-east1 GOOGLE_GENAI_USE_VERTEXAI=true tsx src/index.ts",
+    "start-server": "GOOGLE_CLOUD_PROJECT=enriquekchan-b646b GOOGLE_CLOUD_LOCATION=us-east1 GOOGLE_GENAI_USE_VERTEXAI=true tsx src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

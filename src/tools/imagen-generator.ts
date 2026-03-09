@@ -5,7 +5,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 // Note: Requires GOOGLE_CLOUD_PROJECT and GOOGLE_CLOUD_LOCATION set
-const project = process.env.GOOGLE_CLOUD_PROJECT || 'project-maui';
+const project = process.env.GOOGLE_CLOUD_PROJECT || 'enriquekchan-b646b';
 const location = process.env.GOOGLE_CLOUD_LOCATION || 'us-central1';
 const apiEndpoint = `${location}-aiplatform.googleapis.com`;
 

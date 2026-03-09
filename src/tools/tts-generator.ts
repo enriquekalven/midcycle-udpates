@@ -58,7 +58,7 @@ export const chirpTtsTool = new FunctionTool({
       const hash = crypto.createHash('md5').update(text + voiceName).digest('hex').substring(0, 12);
       const fileName = `menu_${hash}.mp3`;
       
-      const targetDir = '/Users/enriq/.gemini/jetski/scratch/fishermans-wharf-menu/public/audio';
+      const targetDir = path.join(process.cwd(), 'public', 'audio');
       const filePath = path.join(targetDir, fileName);
 
       await fs.ensureDir(targetDir);
