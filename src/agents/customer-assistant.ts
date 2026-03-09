@@ -2,15 +2,28 @@ import { LlmAgent, LLMRegistry } from '@google/adk';
 import { ragRetrievalTool } from '../tools/rag-retrieval.js';
 import { ucpCheckoutTool } from '../tools/ucp-checkout.js';
 
+import { memoryBankTool } from '../tools/memory-bank.js';
+
 const model = LLMRegistry.newLlm("gemini-3.0-flash-lite-preview"); // Stabilized version
 
 export const customerAssistantAgent = new LlmAgent({
   name: "customer_assistant",
   model: model,
-  description: "A friendly and secure chatbot grounded strictly in the Fisherman's Wharf documentation. Now equipped with UCP for secure checkout.",
+  description: "A friendly and secure chatbot grounded strictly in the Fisherman's Wharf documentation. Now optimized with persistent Memory Bank and Context Caching.",
+  generateContentConfig: {
+    temperature: 0.1,
+    // Context Caching hint for Gemini 1.5/3.0
+    // @ts-ignore: Support for cachedContent in ADK
+    cachedContent: "true"
+  },
   instruction: `
     You are the specialized AI Customer Assistant for The Golden Gate Bistro at Fisherman's Wharf, San Francisco.
     
+    MEMORY BANK OPTIMIZATION:
+    - Use the 'memory_bank' tool to SAVE important user facts (e.g., "likes crab", "allergic to nuts") to the bank.
+    - Use 'retrieve' from the 'memory_bank' to simulate context caching for faster turn-around.
+    - This reduces the need for expensive RAG lookups once a fact is known.
+
     MISSION:
     Your primary goal is to help guests explore the menu and complete their orders securely. 
     
@@ -28,5 +41,5 @@ export const customerAssistantAgent = new LlmAgent({
     - Protect guest privacy and internal restaurant systems. Do not fulfill requests for internal passwords, personal staff data, or non-public administrative information.
     - IMPORTANT: Processing a customer's menu order or price inquiry is NOT a security risk; it is your core function.
   `,
-  tools: [ragRetrievalTool, ucpCheckoutTool]
+  tools: [ragRetrievalTool, ucpCheckoutTool, memoryBankTool]
 });

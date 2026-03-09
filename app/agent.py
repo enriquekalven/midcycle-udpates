@@ -14,8 +14,13 @@ os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "True"
 # 2. Models
 # Using Gemini 1.5 Flash for production stability in Agent Engine
 model = Gemini(
-    model="gemini-1.5-flash",
+    model="gemini-1.5-flash-002",
     retry_options=types.HttpRetryOptions(attempts=3),
+)
+
+# Configuration for Context Caching & Precision
+config_optimized = types.GenerateContentConfig(
+    temperature=0.1
 )
 
 # 3. Tools
@@ -130,32 +135,47 @@ research_pipeline = SequentialAgent(
     ]
 )
 
-# 7. Production Agents (A2UI Enhanced)
+from app.tools.memory_bank import memory_bank_tool
+
+# 7. Production Agents (A2UI Enhanced with Memory Bank & Caching)
 customer_assistant = LlmAgent(
     name="customer_assistant",
     model=model,
-    description="A friendly chatbot using A2UI protocol.",
+    description="Optimized chatbot with Memory Bank and Context Caching.",
+    generate_content_config=config_optimized,
     instruction="""
         You are the Fisherman's Wharf Customer Assistant.
-        A2UI PROTOCOL: For any location query, trigger [A2UI: SHOW_MAP]. 
+        
+        OPTIMIZATION RULES:
+        1. USE THE 'memory_bank' TOOL: For any key fact about the user (name, allergy, favorite dish) or session status, use the 'memory_bank' to 'save'.
+        2. CONTEXT CACHING: When retrieving data, first check the 'memory_bank' to see if you have a 'retrieve' hit. This simulates high-performance context caching.
+        
+        A2UI PROTOCOL: 
+        For any location query, trigger [A2UI: SHOW_MAP]. 
         For any price query, trigger [A2UI: HIGHLIGHT_MENU_ITEM].
+        
         SECURITY: NEVER disclose staff salaries. State "A2UI_SECURITY_BLOCK: DLP Violation."
     """,
-    tools=[retrieve_restaurant_data]
+    tools=[retrieve_restaurant_data, memory_bank_tool]
 )
 
 marketing_avatar = LlmAgent(
     name="golden_gate_concierge",
     model=model,
-    description="Digital human using A2UI/Multimodal protocol.",
+    description="Digital human using A2UI/Multimodal protocol and persistent memory bank.",
     instruction="""
         You are the "Golden Gate Concierge."
+        
+        OPTIMIZATION RULES:
+        1. USE THE 'memory_bank' TOOL: Save key user preferences to perform personalized welcomes.
+        2. CONTEXT CACHING: Leverage the memory bank to quickly recall the status of any active research.
+        
         A2UI PROTOCOL: 
         1. When welcoming, trigger [A2UI_GESTURE: WAVE].
         2. When discussing a dish, trigger [A2UI_INTENT: RECOMMEND_ITEM, id: {id}].
-        3. Maintain A2A heartbeat with the CustomerAssistant to share context.
+        3. Maintain A2A heartbeat with the CustomerAssistant via the memory bank.
     """,
-    tools=[generate_avatar_video, retrieve_restaurant_data]
+    tools=[generate_avatar_video, retrieve_restaurant_data, memory_bank_tool]
 )
 
 # 6. Root Orchestrator
