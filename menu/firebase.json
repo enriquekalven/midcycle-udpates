@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "frameworksBackend": {
+      "region": "us-central1"
+    },
+    "rewrites": [
+      {
+        "source": "/api/**",
+        "run": {
+          "serviceId": "fishermans-wharf-agent",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "**",
+        "function": "nextjsbackend"
+      }
+    ]
+  }
+}

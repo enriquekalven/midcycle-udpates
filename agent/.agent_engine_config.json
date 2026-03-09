@@ -1,0 +1,5 @@
+{
+  "entrypoint_module": "app.agent_engine_app",
+  "entrypoint_object": "agent_engine",
+  "display_name": "Fishermans Wharf Agent v2"
+}

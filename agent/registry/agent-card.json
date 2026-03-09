@@ -1,0 +1,38 @@
+{
+  "name": "fishermans-wharf-agent-v2",
+  "version": "0.3.0",
+  "description": "Deep research and menu analysis agent specializing in Fisherman's Wharf dining trends.",
+  "type": "A2A_AGENT",
+  "url": "https://fishermans-wharf-agent-v2-project-maui.a.run.app",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "skills": [
+    {
+      "id": "research_planner",
+      "name": "Research Planner",
+      "description": "Generates a mandatory 5-point research plan for human approval."
+    },
+    {
+      "id": "section_researcher",
+      "name": "Section Researcher",
+      "description": "Performs deep web research with citations using MCP/Search."
+    },
+    {
+      "id": "culinary_critic",
+      "name": "Culinary Critic",
+      "description": "Analyzes menus and culinary trends at Fisherman's Wharf."
+    },
+    {
+      "id": "report_composer",
+      "name": "Report Composer",
+      "description": "Synthesizes findings into grounded reports and PDF files."
+    }
+  ],
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/markdown", "application/pdf"],
+  "entrypoint": "src/index.ts"
+}
+

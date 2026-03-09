@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+.gemini
+*.pdf
+debug_deploy
+debug_cloud_run
+deploy_tmp
+temp_ts_project
+*.ts
+tsconfig.json
+package.json
+package-lock.json
+src/
